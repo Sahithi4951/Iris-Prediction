@@ -3,7 +3,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
-import streamlit as st
 data = pd.read_csv(r"C:\Users\bashe\Downloads\archive (2)\Iris.csv")
 X = data[["SepalLengthCm","SepalWidthCm","PetalLengthCm","PetalWidthCm"]]
 y = data["Species"]
@@ -17,10 +16,8 @@ slen = float(input("Enter the length of Sepal(cm):"))
 swidth = float(input("Enter the width of Sepal(cm):"))
 plen = float(input("Enter the length of Petal(cm):"))
 pwidth = float(input("Enter the width of Petal(cm):"))
-if st.button("Predict"):
-    X_copy = [[slen,swidth,plen,pwidth]]
-    X_scaled = scaler.transform(X_copy)
-    predicted_species = model.predict(X_scaled)
-    print("The predicted species is ",predicted_species)
-    print("Accuracy:",accuracy_score(pred,y_test))
-    st.success("Predicted Species: Iris-virginica")
+X_copy = [[slen,swidth,plen,pwidth]]
+X_scaled = scaler.transform(X_copy)
+predicted_species = model.predict(X_scaled)
+print("The predicted species is ",predicted_species)
+print("Accuracy:",accuracy_score(pred,y_test))
